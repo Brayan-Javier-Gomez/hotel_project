@@ -1,16 +1,9 @@
-.page {
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff8e;
-    height: 100vh;
-}
-
 #login .container #login-row #login-column #login-box {
     margin-top: 120px;
     max-width: 600px;
     height: 250px;
-    border: 1px solid #830e0e;
-    background-color: #d6d6d6;
+    border: 1px solid #0a2e03;
+    background-color: #00000048;
     border-radius: 20px;
 }
 

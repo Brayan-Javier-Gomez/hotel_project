@@ -3,7 +3,10 @@ export class hotelModel{
         codigo: string;
         usuario: string;
         cedula: string;
-        disponible: string;
-    }
+        celular: string;
+        disponible: boolean;
+        _id: string;
+    };
+    elementos: string;
 
 }

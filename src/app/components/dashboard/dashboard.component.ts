@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class DashboardComponent implements OnInit {
   public cargado;
   public role: any;
-  private data_user: any;
+ 
 
   public suites: hotelModel;
 
@@ -21,17 +21,16 @@ export class DashboardComponent implements OnInit {
   constructor(public hotelService: HotelService) {
     this.cargado = false;
     console.log(this.cargado);
+    this.get_rol();
+    this.obtener();
 
   }
 
   ngOnInit(): void {
 
-   
+
     this.get_rol();
     this.obtener();
-
-
-   
 
   }
 
@@ -53,6 +52,7 @@ export class DashboardComponent implements OnInit {
 
 
       this.suites = await this.hotelService.get_habitaciones()
+      console.log(this.suites.elementos);
 
     }
 
@@ -63,7 +63,6 @@ export class DashboardComponent implements OnInit {
 
         if (this.suites.habitaciones[i].disponible === true) {
 
-          this.data_user = this.suites.habitaciones[i];
           //  this.suites = this.data_user;
 
           console.log(this.suites);
@@ -75,6 +74,17 @@ export class DashboardComponent implements OnInit {
     console.log(this.cargado);
   }
 
+  eliminar(suite) {
+    this.hotelService.delete_user(suite._id).subscribe();
+    
+  }
 
+// obtener_data(){
+// this.suites = this.hotelService.get_habitaciones_user().subscribe((data)=>{
+//   console.log(data);
+  
+// });
+
+// }
 
 }

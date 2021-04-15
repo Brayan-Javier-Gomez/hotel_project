@@ -9,9 +9,10 @@ import { map } from 'rxjs/operators';
 })
 export class HotelService {
   url = 'http://localhost:3001/habitaciones'
+
   constructor(public http: HttpClient) { }
 
-  data_user: hotelModel[];
+  data_user;
 
   get_habitaciones(): Promise<any> {
 
@@ -19,19 +20,27 @@ export class HotelService {
 
   }
 
-  get_habitaciones_user() {
-
-    return this.http.get(`${this.url}`);
-
+  get_habitaciones_user(id: string) {
+    return this.http.get(`${this.url}/${id}`);
   }
 
+  delete_user(id: string) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 
+  edit_user(body: hotelModel) {
 
-  // crear_habitacion(suite: hotelModel){
+    const data = {
+      usuario: body.habitaciones.usuario,
+      cedula: body.habitaciones.cedula,
+      celular: body.habitaciones.celular,
+      disponible: body.habitaciones.disponible
+    };
+    const id = body.habitaciones._id;
 
-  //   return this.http.post(`${this.url}` , suite);
-
-  // }
+    console.log(id);
+    return this.http.put(`${this.url}/${id}`, data);
+  }
 
 }
 
