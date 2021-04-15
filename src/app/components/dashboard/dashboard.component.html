@@ -2,17 +2,17 @@
 
     <div class="container-fluid row text-center navbar navbar-dark bg-dark">
 
-        <h1 class=" col-2 text-success">Reservations</h1>
+        <h1 class=" col-sm-2 text-success">Reservations</h1>
 
 
-        <div class="col-8 d-grid gap-2 d-md-flex justify-content-md-end">
+        <div class="col-sm-8 d-grid gap-2 d-md-flex justify-content-md-end">
 
 
-            <button class="btn btn-outline-success" type="button">Create a new reservation</button>
+            <button class="btn btn-outline-success" type="button" *ngIf="role === 'user'">Create a new reservation</button>
 
         </div>
 
-        <h5 class=" col-2 text-success">{{role | uppercase}}
+        <h5 class=" col-sm-2 text-success">{{role | uppercase}}
 
             <button class="btn btn-dark" routerLink="/login">
         
@@ -32,21 +32,38 @@
 
         <div class="row">
 
-            <div class="container-md col-3" *ngFor="let dato of suites.habitaciones" style="padding: 30px; margin-left:30px; margin-right: 30px;">
+            <div class="col-sm-3" *ngFor="let dato of suites.habitaciones">
 
-                <div class="card border-info mb-3" *ngIf="dato.disponible === false">
+                <div class="card text-white bg-dark mb-3" *ngIf="dato.disponible === false" style="border-color: rgb(12, 114, 6);">
 
                     <img src="../../../assets/img/HABITACIONES_TABLET.jpg" class="card-img-top" alt="...">
 
                     <div class="card-body">
 
-                        <h4 class="card-title text-center"> BedRoom Nº {{dato.codigo | uppercase}}</h4>
+                        <h4 class="card-title text-center text-info"> BedRoom Nº {{dato.codigo | uppercase}}</h4>
 
-                        <h6 class="card-subtitle mb-2 text-muted"> {{dato.usuario | uppercase}}</h6>
+                        <br>
 
-                        <p class="card-text">{{dato.cedula | uppercase}}</p>
+                        <h6 class="card-subtitle mb-2 text-success">
 
-                        <p class="card-text">{{dato.celular | uppercase}}</p>
+                            <i class="fa fa-user-alt">
+
+                            </i> {{dato.usuario | uppercase}}</h6>
+
+                        <hr>
+
+                        <p class="card-text">
+
+                            <i class="fa fa-address-card">
+
+                            </i> {{dato.cedula | uppercase}}
+
+                        </p>
+
+                        <p class="card-text">
+                            <i class="fa fa-phone">
+
+                            </i> {{dato.celular | uppercase}}</p>
 
                         <!--
 
@@ -64,6 +81,12 @@
 
                             </i>
                         
+                        </button>
+
+                        <button class="btn btn-outline-danger btn-sm" (click)="eliminar(dato)">
+              
+                         <i class="fa fa-trash-alt"></i>
+                
                         </button>
 
                     </div>
@@ -129,7 +152,7 @@
                   
                         </i>
                   
-                    </button>
+                        </button>
 
                     </td>
 
