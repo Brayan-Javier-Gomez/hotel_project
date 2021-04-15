@@ -14,7 +14,11 @@ const hotelShema = new Shema({
     },
     cedula: {
         type: String,
-        default: 'Disponible'
+        default: ''
+    },
+    celular: {
+        type: String,
+        default: ''
     },
     disponible: {
         type: Boolean,

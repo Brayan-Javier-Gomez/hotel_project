@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+
 const hotelCategoria = require('./model');
 
 
@@ -20,10 +21,13 @@ app.get('/habitaciones', (req, res) => {
 
 
             }
+            hotelCategoria.count({}, (err, n_elementos) => {
+                res.json({
+                    ok: true,
+                    habitaciones: habitaciones,
+                    elementos: n_elementos
+                })
 
-            res.json({
-                ok: true,
-                habitaciones: habitaciones
             })
         })
 
@@ -50,7 +54,7 @@ app.get('/habitaciones/:id', (req, res) => {
 
         res.json({
             ok: true,
-            habitacion: habitacion
+            habitaciones: habitacion
         })
     })
 
@@ -64,6 +68,7 @@ app.post('/habitaciones', (req, res) => {
         codigo: body.codigo,
         usuario: body.usuario,
         cedula: body.cedula,
+        celular: body.celular,
         disponible: body.disponible
     })
 
@@ -95,8 +100,7 @@ app.post('/habitaciones', (req, res) => {
 app.put('/habitaciones/:id', (req, res) => {
     let id = req.params.id;
     let body = req.body;
-    console.log(id);
-    console.log(body);
+
     hotelCategoria.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, habitacion) => {
         if (err) {
             return res.status(400).json({
@@ -126,7 +130,8 @@ app.delete('/habitaciones/:id', (req, res) => {
     let id = req.params.id;
     let body = {
         usuario: 'disponible',
-        cedula: 'disponible',
+        cedula: '',
+        celular: '',
         disponible: 'true'
     };
 
