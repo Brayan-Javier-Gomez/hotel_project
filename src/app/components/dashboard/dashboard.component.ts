@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
 
       this.hotelService.delete_user(suite._id).subscribe();
 
-      location.reload();
+      window.location.reload();
 
     })
 
@@ -126,11 +126,11 @@ export class DashboardComponent implements OnInit {
 
       codigo: contador + 1
 
-    }
+    };
 
     this.hotelService.create_reservation(body).subscribe((data) => {
 
-      location.reload();
+      window.location.reload();
 
     });
 
