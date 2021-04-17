@@ -42,51 +42,46 @@ export class EditorComponent implements OnInit {
 
       this.nuevo = true;
 
-    }
+    } else {
 
-    const id = this.router.snapshot.paramMap.get('id');
+      const id = this.router.snapshot.paramMap.get('id');
 
-    console.log(this.nuevo);
+      this.hotelService.get_habitaciones_user(id).subscribe((data: hotelModel) => {
 
-    console.log(id);
+        Swal.fire({
 
-    this.hotelService.get_habitaciones_user(id).subscribe((data: hotelModel) => {
+          icon: 'info',
 
-      Swal.fire({
+          title: 'Espere por favor',
 
-        icon: 'info',
+          allowOutsideClick: false
 
-        title: 'Espere por favor',
+        });
 
-        allowOutsideClick: false
+        Swal.showLoading();
+
+        this.data = data;
+
+        this.data.habitaciones._id = id;
+
+        Swal.close();
 
       });
 
-      Swal.showLoading();
+    }
 
-      this.data = data;
-
-      this.data.habitaciones._id = id;
-
-      Swal.close();
-
-      console.log(data.habitaciones);
-
-    });
 
   }
 
-  async obtener() {
+  // async obtener() {
 
-    await this.hotelService.get_habitaciones().then((data) => {
+  //   await this.hotelService.get_habitaciones().then((data) => {
 
-      this.suites = data;
+  //     this.suites = data;
 
-      console.log(this.suites);
+  //   });
 
-    });
-
-  }
+  // }
 
   editar(form: NgForm): any {
 
@@ -119,8 +114,6 @@ export class EditorComponent implements OnInit {
       }, 1000);
 
     });
-
-    console.log(form);
 
   }
 

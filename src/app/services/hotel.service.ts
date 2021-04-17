@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 
 export class HotelService {
 
-  url = 'http://localhost:3001/habitaciones'
+  url = 'https://hitman-hotel-project.herokuapp.com/habitaciones';
 
   constructor(public http: HttpClient) { }
 
@@ -32,7 +32,6 @@ export class HotelService {
     return this.http.get(`${this.url}/${id}`);
 
   }
-
 
   delete_user(id: string) {
 
@@ -55,8 +54,6 @@ export class HotelService {
     };
 
     const id = body.habitaciones._id;
-
-    console.log(id);
 
     return this.http.put(`${this.url}/${id}`, data);
 

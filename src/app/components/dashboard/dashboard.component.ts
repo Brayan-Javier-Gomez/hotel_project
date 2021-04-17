@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 
 export class DashboardComponent implements OnInit {
 
-  public cargado;
+  public cargado = false;
 
   public role: any;
 
@@ -28,8 +28,6 @@ export class DashboardComponent implements OnInit {
   public contador;
 
   constructor(public hotelService: HotelService) {
-
-    this.cargado = false;
 
     this.get_rol();
 
@@ -59,8 +57,7 @@ export class DashboardComponent implements OnInit {
     if (this.role === 'admin') {
 
       this.suites = await this.hotelService.get_habitaciones();
-
-
+      this.cargado = true;
     }
 
     if (this.role === 'user') {
@@ -69,9 +66,14 @@ export class DashboardComponent implements OnInit {
 
       this.contador = this.suites.elementos;
 
+      this.cargado = true;
 
     }
 
+    if (this.suites.habitaciones) {
+
+
+    }
     console.log(this.cargado);
 
   }
@@ -118,8 +120,6 @@ export class DashboardComponent implements OnInit {
 
     const contador = this.suites.elementos;
 
-    console.log(contador);
-
     const body = {
 
       usuario: 'disponible',
@@ -129,8 +129,6 @@ export class DashboardComponent implements OnInit {
     }
 
     this.hotelService.create_reservation(body).subscribe((data) => {
-
-      console.log(data);
 
       location.reload();
 
