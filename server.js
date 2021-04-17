@@ -32,18 +32,15 @@ if (process.env.NODE_ENV === 'dev') {
 
 
 } else {
+
     urlDB = 'mongodb+srv://bryan_gomez:Brayangomez1986@cluster0.ievef.mongodb.net/hotel';
 }
+
 process.env.URLDB = urlDB;
 
 //===================================
-
-
-
-
 //Body_parser para peticiones post
 //===================================
-
 
 app.use(bodyparser.urlencoded({ extended: false }));
 
@@ -53,23 +50,33 @@ app.use(require('./gestion.js'))
 
 
 app.get('/', (req, res) => {
+
     res.send(
+
         '<h1 style="text-align:center; padding:15px; color: blue" >Cargado correctamente</h1>'
+
     )
 
 })
 
+//===================================
 //Conexion con base de datos
 //===================================
+
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useUnifiedTopology: true }, (err, resp) => {
 
     if (err) {
+
         console.log(err);
+
     }
+
     console.log('corriendo base de datos puerto 27017');
 
 });
 
 app.listen(process.env.PORT, () => {
+
     console.log(`Servidor iniciado en el puerto ${process.env.PORT}`);
+
 })
