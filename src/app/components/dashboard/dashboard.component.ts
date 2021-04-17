@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
 
     this.role = localStorage.getItem('role');
 
-
   }
 
   // obtener todos los registros
@@ -98,9 +97,15 @@ export class DashboardComponent implements OnInit {
 
     }).then(res => {
 
-      this.hotelService.delete_user(suite._id).subscribe();
+      this.hotelService.delete_user(suite._id).subscribe((data) => {
 
-      window.location.reload();
+        console.log(data);
+        location.reload();
+        console.log('eliminar');
+
+    });
+
+
 
     })
 
