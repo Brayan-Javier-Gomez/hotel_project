@@ -4,11 +4,10 @@
 
         <h1 class=" col-sm-2 text-success">Reservations</h1>
 
-
         <div class="col-sm-8 d-grid gap-2 d-md-flex justify-content-md-end">
 
 
-            <button class="btn btn-outline-success" type="button" *ngIf="role === 'user'">Create a new reservation</button>
+            <button class="btn btn-outline-success" type="button" *ngIf="role === 'user'" [routerLink]="['/editor' , 'new']">Create a new reservation</button>
 
         </div>
 
@@ -28,7 +27,21 @@
 
     </div>
 
+
     <div *ngIf="role === 'user'">
+
+        <div *ngIf="contador === 0">
+
+            <h1 class="text-success text-center">
+
+                <i class="fas fa-exclamation-triangle fa-2x"></i>
+
+                <br> currently you hasn't reservations
+
+            </h1>
+
+        </div>
+
 
         <div class="row">
 
@@ -104,6 +117,13 @@
 
     <div class="table-responsive" *ngIf="role === 'admin'">
 
+        <div class="d-grid gap-2">
+
+            <button class="btn btn-success" type="button" (click)='nueva_Reserva()'> Create new reservation room</button>
+
+        </div>
+
+
         <table class="table table-dark table-striped">
 
             <thead>
@@ -161,7 +181,6 @@
             </tbody>
 
         </table>
-
 
     </div>
 

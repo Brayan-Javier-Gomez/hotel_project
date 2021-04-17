@@ -1,52 +1,121 @@
 <div class="container-xxl bg-dark">
+
     <div class=" row text-center navbar navbar-dark bg-dark" style="background-color: rgba(3, 5, 24, 0.842);">
 
         <h1 class="text-success">Editor</h1>
 
     </div>
+
     <hr>
+
     <div class="row" text-rigth>
+
         <div class="col">
+
             <button class="btn btn-danger" routerLink="/dashboard">
-            <i class="fa fa-arrow-left">Back</i>
-        </button>
+
+                <i class="fa fa-arrow-left">Back</i>
+
+            </button>
+
+
+
         </div>
+
     </div>
+
     <br>
+
+
+    <div *ngIf="nuevo === true">
+
+        <h3 class="text-success">
+
+            <i class="fas fa-exclamation-triangle fa-2x">
+            
+        </i>
+
+            <br> Esta funcion no esta disponible, si requiere crear una nueva reserva puede <br> hacerlo desde el rol de administrador y editar las habitaciones disponibles</h3>
+
+        <small class="text-success">Componente disponible en la siguiente version.</small>
+
+        <br>
+
+    </div>
+
     <div class="row animated fadein faster">
 
         <form (ngSubmit)="editar(formHotel)" #formHotel="ngForm">
 
+            <!-- <div class="dropdown" *ngIf="nuevo">
+
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+
+                    Dropdown
+
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+                    <li *ngFor="let data of suites.habitaciones">
+
+                        <button class="dropdown-item" type="button">
+
+                            {{data.codigo}}
+
+                        </button>
+
+                    </li>
+
+                </ul>
+
+            </div> -->
+
             <div class="form-group">
+
                 <label class="text-success">Name</label>
 
                 <input class="form-control" type="text" placeholder="Name" name="usuario" required [(ngModel)]="data.habitaciones.usuario">
+
                 <span class="text-danger" *ngIf="formHotel.submitted && formHotel.controls['usuario'].errors">The name is required</span>
+
             </div>
 
             <div class="fom-group">
+
                 <label class="text-success">Ideintification</label>
+
                 <input class="form-control" type="text" placeholder="Ideintification" name="cedula" required [(ngModel)]="data.habitaciones.cedula">
+
                 <span class="text-danger" *ngIf="formHotel.submitted && formHotel.controls['cedula'].errors">The ideintification is required</span>
 
             </div>
+
             <div class="fom-group">
+
                 <label class="text-success">Mobile</label>
+
                 <input class="form-control" type="text" placeholder="Mobile Number" name="celular" required [(ngModel)]="data.habitaciones.celular">
+
                 <span class="text-danger" *ngIf="formHotel.submitted && formHotel.controls['celular'].errors">You must register a mobile number</span>
 
             </div>
+
             <br>
 
             <div class="form-group text-center">
+
                 <button class="btn btn-success" type="submit">  
+
                     <i class="fa fa-save"></i>
+
                     Save
+
                 </button>
+
             </div>
 
         </form>
-
 
     </div>
 

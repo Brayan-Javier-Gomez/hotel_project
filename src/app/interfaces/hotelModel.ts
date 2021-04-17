@@ -7,6 +7,6 @@ export class hotelModel{
         disponible: boolean;
         _id: string;
     };
-    elementos: string;
+    elementos: number;
 
 }
