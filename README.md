@@ -1,5 +1,5 @@
 # Aplicacion de reservas de hotel
-#Angular
+# Angular
 Este repositorio aloja el servidor web para manejo de las peticiones Http escrito con NodeJS, el codigo de Backend se encuentra el la rama Back,
 ademas, aloja el codigo de angular con el que se dasarrollo la interfaz y  que realiza las peticiones al servidor web arriba descrito, 
 
