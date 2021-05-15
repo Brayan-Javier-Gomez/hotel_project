@@ -48,14 +48,13 @@ app.use(bodyparser.json())
 
 app.use(require('./gestion.js'))
 
+app.use(express.static(__dirname + '/dist/front'));
 
 app.get('/', (req, res) => {
 
-    res.send(
 
-        '<h1 style="text-align:center; padding:15px; color: blue" >Cargado correctamente</h1>'
+    res.sendFile(path.join(__dirname + '/dist/front/index.html'))
 
-    )
 
 })
 
