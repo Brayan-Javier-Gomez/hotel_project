@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'dev') {
 
 } else {
 
-    urlDB = 'mongodb+srv://bryan_gomez:Brayangomez1986@cluster0.ievef.mongodb.net/hotel';
+    urlDB = 'mongodb+srv://##########:##########@cluster0.ievef.mongodb.net/hotel';
 }
 
 process.env.URLDB = urlDB;
